@@ -1,0 +1,44 @@
+Docker image with link:https://www.ncftp.com/ncftp/doc/ncftpput.html[ncftp] for uploads and downloads via FTP.
+
+image:{github-actions-url}/{job-generate-docs}/{badge}[Github Badge, link={github-actions-url}/{job-generate-docs}]
+image:{github-actions-url}/{job-ci}/{badge}[Github Badge, link={github-actions-url}/{job-ci}]
+image:{github-actions-url}/{job-release}/{badge}[Github Badge, link={github-actions-url}/{job-release}]
+
+* Github Repository -> {url-project}
+* Documentation -> https://www.sommerfeld.io/docs/docker-images/{project-name}-docs/main
+* Published Docker images -> https://hub.docker.com/r/sommerfeldio/{image-name}
+* Docker image tag scheme -> link:https://www.sommerfeld.io/docs/projects/infrastructure-docs/main/GUIDELINES/index.html#_version_tags[Guidelines and Conventions] on docs.cloud.sommerfeld.io
+* Where to file issues -> {url-project}/issues
+
+== What is `{image-name}`?
+The `{image-name}` image ships with NCFTP and uses link:https://www.ncftp.com/ncftp/doc/ncftpput.html[ncftpput] for FTP uploads.
+
+To see which packages are shipped with this image, take a look at the link:https://github.com/sebastian-sommerfeld-io/{project-name}/blob/main/src/main/Dockerfile[Dockerfile].
+
+== How to use this image
+=== Use without a `Dockerfile`
+To use the image without a `Dockerfile` run the following command. Note that storing passwords in variables like this is not a recommended way to secure your secrets.
+[source, sh]
+----
+FTP_HOST="ftp-host.example.com"
+FTP_USER="the_username"
+FTP_PASS="the_password"
+
+echo "Upload via FTP"
+docker run -i --rm \
+    --volume "$(pwd):$(pwd)" \
+    --workdir "$(pwd)" \
+    sommerfeldio/ftp-client:latest ncftpput -R -v -u "$FTP_USER" -p "$FTP_PASS" "$FTP_HOST" / *
+----
+
+== Risks and Technical Debts
+Scale for Probability and Impact: Low, Medium and High
+
+[cols="^1,2,5a,1,1,5a", options="header"]
+|===
+|# |Title |Description |Probability |Impact |Response
+|{counter:usage} |- |- |- |- |-
+|===
+
+== Contact
+Feel free to contact me via sebastian@sommerfeld.io or visit my website https://www.sommerfeld.io.
