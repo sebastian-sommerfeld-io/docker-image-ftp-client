@@ -1,7 +1,7 @@
 ---
 name: docker-images-ftp-client
 title: Docker Image ftp-client
-version: main
+version: v0.0.1
 start_page: ROOT:index.adoc
 nav:
   - modules/ROOT/nav.adoc
