@@ -1,7 +1,7 @@
 ---
 name: docker-images-ftp-client
 title: Docker Image ftp-client
-version: feat__pipeline-cleanup
+version: main
 start_page: ROOT:index.adoc
 nav:
   - modules/ROOT/nav.adoc
