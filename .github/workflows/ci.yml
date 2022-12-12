@@ -108,7 +108,7 @@ jobs:
         with:
           context: ./src/main
           platforms: linux/amd64
-          push: tru${{ github.actor != 'dependabot[bot]' }}e
+          push: ${{ github.actor != 'dependabot[bot]' }}
           tags: sommerfeldio/ftp-client:${{ steps.vars.outputs.DOCKER_TAG }}
 
       - name: Run container and print versions of installed packages
